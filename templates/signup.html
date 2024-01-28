@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06aa5e" />
+    <meta name="msapplication-navbutton-color" content="#06aa5e" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <title>Sign up</title>
+    <link
+      rel="shortcut icon"
+      href="../static/img/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+    <script src="{% static 'js/signup.js' %}" defer></script>
+  </head>
+  <body>
+    <main class="card-container slideUp-animation">
+      <div class="image-container">
+        <img src="../static/img/signUp.svg" class="illustration" alt="" />
+        <p class="quote">Зарегистрироваться сегодня</p>
+        <a href="#btm" class="mobile-btm-nav">
+          <img src="../static/img/dbl-arrow.png" alt="" />
+        </a>
+      </div>
+      <form method="post" enctype="multipart/form-data">
+        <div class="form-container slideRight-animation">
+            {% csrf_token %}
+            <div class="avatar_container">
+                {{form.image}}
+                <div id="preview" aria-labelledby="image" aria-describedby="image">
+                    <div id="avatar"></div>
+                </div>
+            </div>
+    
+            {% if form.username.errors %}
+                <p class="error-message">{{ form.username.errors }}</p>
+            {% endif %}
+            {{form.username}}
+    
+            {% if form.email.errors %}
+                <p class="error-message">{{ form.email.errors }}</p>
+            {% endif %}
+            {{form.email}}
+    
+            {% if form.first_name.errors %}
+                <p class="error-message">{{ form.first_name.errors }}</p>
+            {% endif %}
+            {{form.first_name}}
+    
+            {% if form.last_name.errors %}
+                <p class="error-message">{{ form.last_name.errors }}</p>
+            {% endif %}
+            {{form.last_name}}
+    
+            {% if form.birthdate.errors %}
+                <p class="error-message">{{ form.birthdate.errors }}</p>
+            {% endif %}
+            {{form.birthdate}}
+    
+            {% if form.password1.errors %}
+                <p class="error-message">{{ form.password1.errors }}</p>
+            {% endif %}
+            {{form.password1}}
+    
+            {% if form.password2.errors %}
+                <p class="error-message">{{ form.password2.errors }}</p>
+            {% endif %}
+            {{form.password2}}
+    
+            <div id="btm">
+                <button type="submit" class="submit-btn">Зарегистрироваться</button>
+                <p class="btm-text">
+                    Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
+                </p>
+            </div>
+        </div>
+    </form>
+    
+    </main>
+    <section class="outro-overlay disabled slideUp-animation">
+      <h1 class="company">Basket <sup>&trade;</sup></h1>
+      <h1 class="outro-greeting">Thank's for signing up..!</h1>
+      <img src="../static/img/shape.svg" alt="" class="shape" />
+      <img
+        src="../static/img/signedUp.svg"
+        alt=""
+        id="signedUp-illustration"
+        class="slideRight-animation"
+      />
+    </section>
+    <script>
+      const UPLOAD_BUTTON = document.getElementById("avatar");
+      const FILE_INPUT = document.querySelector("input[type=file]");
+      const AVATAR = document.getElementById("avatar");
+
+      UPLOAD_BUTTON.addEventListener("click", () => FILE_INPUT.click());
+
+      FILE_INPUT.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onloadend = () => {
+          AVATAR.setAttribute("aria-label", file.name);
+          AVATAR.style.background = `url(${reader.result}) center center/cover`;
+        };
+      });
+    </script>
+  </body>
+</html>

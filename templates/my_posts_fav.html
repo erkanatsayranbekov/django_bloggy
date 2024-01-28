@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/my_posts.css' %}"> {% endblock %}
+
+{% block content %}
+<section class="section recent" aria-label="recent post">
+    <div class="container">
+      <ul class="grid-list">
+        {% for post in posts %}
+        <li>
+          <div class="blog-card">
+            <figure
+              class="card-banner img-holder"
+              style="--width: 550; --height: 660"
+            >
+              <img
+                src="{{ post.image.url}}"
+                width="550"
+                height="660"
+                loading="lazy"
+                alt="Creating is a privilege but it’s also a gift"
+                class="img-cover"
+              />
+              <ul class="avatar-list absolute">
+                <li class="avatar-item">
+                  <a
+                    href="#"
+                    class="avatar img-holder"
+                    style="--width: 100; --height: 100"
+                  >
+                    <img
+                      src="{% if post.user.image %}  {{post.user.image.url}} {% else %} {% static 'img/user.png' %} {% endif %}"
+                      width="100"
+                      height="100"
+                      loading="lazy"
+                      alt="Author"
+                      class="img-cover"
+                    />
+                  </a>
+                </li>
+              </ul>
+              <div class="delete-edit absolute">
+                <form action="{% url 'delete' post.id %}" method="post" >
+                  {% csrf_token %}
+                  <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                </form>
+                <a href="{% url 'update_post' post.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
+              </div>
+              <div class="like absolute">
+                <a href="{% url 'like' post.id %}"> 
+                  {{ post.liked_by.count }}
+                    {% if request.user in post.liked_by.all %} 
+                    <i class="fa-solid fa-heart" style="color: red;"></i>
+                  {% else %} 
+                    <i class="fa-regular fa-heart"></i> 
+                  {% endif %} </a>
+              </div>
+            </figure>
+
+            <div class="card-content">
+              <ul class="card-meta-list">
+                {% for tag in post.tags.all %}
+                <li>
+                  <a href="#" class="card-tag">{{ tag.name }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+
+              <h3 class="h4">
+                <a href="{% url 'post' post.id %}" class="card-title hover:underline">
+                  {{ post.title }}
+                </a>
+              </h3>
+
+              <p class="card-text">{{ post.body }}</p>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+</section>
+{% endblock %}

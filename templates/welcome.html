@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+</head>
+<body class="ms-fabric" dir="ltr">
+    
+    <main>
+        <p id="welcome">Welcome to Cloned To Do</p>
+        <a id="signin-btn" href="#">Sign in</a> 
+        <span>or</span>
+        <a id="signup-btn" href="{% url 'signup' %}">Sign up</a>
+    </main>
+
+</body>
+</html>

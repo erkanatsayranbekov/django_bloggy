@@ -1,0 +1,130 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/post.css' %}" /> {% endblock %}
+{% block content %}
+<section class="section recent" aria-label="recent post">
+  <div class="container">
+    <div class="title-wrapper">
+      <h2 class="h2 section-title">
+        <b class="card-title hover:underline"> {{ post.title }} </b>
+      </h2>
+      <div style="display: flex; gap: 20px; align-items: center;">
+
+        <ul class="card-meta-list">
+            {% for tag in post.tags.all %}
+            <li>
+                <a href="#" class="card-tag">{{ tag.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="avatar-item">
+            <a
+              href="#"
+              class="avatar img-holder"
+              style="--width: 100; --height: 100"
+            >
+              <img
+                src="{% if post.user.image %}  {{post.user.image.url}} {% else %} {% static 'img/user.png' %} {% endif %}"
+                width="100"
+                height="100"
+                loading="lazy"
+                alt="Author"
+                class="img-cover"
+              />
+            </a>
+        </div>
+        {% if post.user == request.user %}
+        <div class="delete-edit">
+          <form action="{% url 'delete' post.id %}" method="post" >
+            {% csrf_token %}
+            <button type="submit"><i class="fa-solid fa-trash"></i></button>
+          </form>
+          <a href="{% url 'update_post' post.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
+        </div>
+        {% endif %}
+    </div>
+    </div>
+
+    <div class="blog-card-post">
+        <figure
+          class="card-banner img-holder img-holder-2"
+          style="width: 550px; height: 660px"
+        >
+          <img
+            src="{{post.image.url}}"
+            width="550"
+            height="660"
+            loading="lazy"
+            alt="Creating is a privilege but it’s also a gift"
+            class="img-cover"
+          />
+          
+        </figure>
+
+      <div class="card-content-post">
+        
+        
+
+        <p class="card-text">{{ post.body }}</p>
+      </div>
+    </div>
+    <form action="" method="post">
+      {% csrf_token %}
+      <span class="star-rating">
+        <label for="rate-1" style="--i:1"><i class="fa-solid fa-star"></i></label>
+        <input type="radio" name="rate" id="rate-1" value="1">
+        <label for="rate-2" style="--i:2"><i class="fa-solid fa-star"></i></label>
+        <input type="radio" name="rate" id="rate-2" value="2" checked>
+        <label for="rate-3" style="--i:3"><i class="fa-solid fa-star"></i></label>
+        <input type="radio" name="rate" id="rate-3" value="3">
+        <label for="rate-4" style="--i:4"><i class="fa-solid fa-star"></i></label>
+        <input type="radio" name="rate" id="rate-4" value="4">
+        <label for="rate-5" style="--i:5"><i class="fa-solid fa-star"></i></label>
+        <input type="radio" name="rate" id="rate-5" value="5">
+        {% if rating %}
+        <p>({{rating}})</p>
+        {% else %}
+        <p>(0)</p>
+        {% endif %}
+        <button type="submit" class="card-tag" style="color: white; border: none;">Оценить</button>
+      </span>
+    </form>
+    <div class="comments">
+      {% for comment in comments %}
+      <div class="comment">
+        <div class="avatar-item">
+          <a
+
+            class="avatar img-holder"
+            style="--width: 100; --height: 100"
+          >
+            <img
+              src="{% if comment.user.image %}  {{comment.user.image.url}} {% else %} {% static 'img/user.png' %} {% endif %}"
+              width="100"
+              height="100"
+              loading="lazy"
+              alt="Author"
+              class="img-cover"
+            />
+          </a>
+        </div>
+        <div class="comment-text">
+          <h3 class="comment-title">
+            <a href="#">{{ comment.user }}</a>
+          </h3>
+          <p>{{ comment.body }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <form action="" method="post">  {% csrf_token %}
+      {{ comment_form.body }}
+      <button type="submit"  class="card-tag"  style="color: white; border: none; margin-top: 20px;">Submit Comment</button>
+    </form>
+  </div>
+</section>
+<script>
+  window.onload = () => {
+    
+  }
+</script>
+{% endblock %}

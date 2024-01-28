@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/profile.css' %}"> {% endblock %}
+
+{% block content %}
+<div class="container-profile">
+
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="main-profile">
+                <div ><img src="{{ user.image.url }}" alt="avatar" class="profile-image"></div>
+                <div class="profile-names">
+                    <h1 class="username">{{ user.first_name }} {{ user.last_name }}</h1>
+                    <small class="page-title">@{{ user.username }}</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-body">
+            
+            <div class="account-info">
+                <div class="data">
+                    <div class="important-data">
+                        <section class="data-item">
+                            <h3 class="value">{{ post_num }}</h3>
+                            <small class="title">Post</small>
+                        </section>
+                        <section class="data-item">
+                            <h3 class="value">{{ request.user.liked_posts.count }} </h3>
+                            <small class="title">Likes</small>
+                        </section>
+                        <section class="data-item">
+                            <h3 class="value">{{ comments_num }}</h3>
+                            <small class="title">Comments</small>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-actions">
+                <section class="bio">
+                    <div class="bio-header">
+                        <i class="fa fa-info-circle"></i>
+                        Bio
+                    </div>
+                    <p class="bio-text">
+                        {{ user.bio }}
+                    </p>
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

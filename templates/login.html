@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06aa5e" />
+    <meta name="msapplication-navbutton-color" content="#06aa5e" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <title>Sign up</title>
+    <link
+      rel="shortcut icon"
+      href="../static/img/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+    <script src="{% static 'js/signup.js' %}" defer></script>
+  </head>
+  <body>
+    <main class="card-container slideUp-animation">
+      <form method="post">
+        <div class="form-container-login slideRight-animation">
+          <h1 class="form-header">Войти</h1>
+          {% csrf_token %}
+
+          {{ form }}
+
+          <div id="btm">
+            <button type="submit" class="submit-btn">Войти</button>
+            <p class="btm-text">
+              Не зарегистрированы? <a href="{% url 'signup' %}"> <br/> Зарегистрироваться</a>
+            </p>
+          </div>
+        </div>
+      </form>
+      <div class="image-container">
+        <img src="../static/img/signedUp.svg" class="illustration" alt="" />
+        <p class="quote">Зарегестритоваться сегодня </p>
+        <a href="#btm" class="mobile-btm-nav">
+          <img src="../static/img/dbl-arrow.png" alt="" />
+        </a>
+      </div>
+    </main>
+  </body>
+</html>

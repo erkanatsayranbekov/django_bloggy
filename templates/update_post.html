@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/create_post.css' %}"> {% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <div class="avatar_container">
+            {{form.image}}
+            <div id="preview" aria-labelledby="image" aria-describedby="image">
+                <div id="avatar"><i class="fa-solid fa-upload" id="icon"></i></div>
+            </div>
+            
+        </div>
+        <div>
+            <h1>Update Post</h1>
+            <div style="display: flex; gap: 20px; align-items: center">
+            <ul class="card-meta-list">
+              {% for tag in post.tags.all %}
+              <li>
+                <a href="#" class="card-tag">{{ tag.name }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+            {{ form.title }}
+            {{ form.body}}
+            {{ form.tags }}
+            <button type="submit" class="create_post">Сохранить</button>
+        </div>
+    </form>
+    <script>
+        const UPLOAD_BUTTON = document.getElementById("avatar");
+        const FILE_INPUT = document.querySelector("input[type=file]");
+        const AVATAR = document.getElementById("avatar");
+        const ICON = document.getElementById("icon");
+  
+        UPLOAD_BUTTON.addEventListener("click", () => FILE_INPUT.click());
+  
+        FILE_INPUT.addEventListener("change", (event) => {
+          const file = event.target.files[0];
+          ICON.remove();
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+  
+          reader.onloadend = () => {
+            AVATAR.setAttribute("aria-label", file.name);
+            AVATAR.style.background = `url(${reader.result}) center center/cover`;
+          };
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+        const postImageUrl = "{{ post.image.url }}";
+        if (postImageUrl) {
+            const avatar = document.getElementById("avatar");
+            avatar.style.background = `url(${postImageUrl}) center center/cover`;
+            avatar.setAttribute("aria-label", "Current avatar");
+        }
+    })
+      </script>
+{% endblock %}

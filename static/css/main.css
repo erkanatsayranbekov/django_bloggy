@@ -1,0 +1,971 @@
+body {
+    margin: 0;
+}
+
+.clearfix::after {
+    content: '';
+    clear: both;
+    display: block;
+}
+button {
+    background: transparent;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+  }
+  
+  button:hover {
+    background: transparent;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+  }
+  
+  button:active {
+    outline: none;
+    border: none;
+  }
+  
+  button:focus {
+    outline: 0;
+  }
+
+
+.viewport {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    background: #f1f1f1;
+    overflow: hidden;
+}
+
+.aside-left-overlay {
+    display: flex;
+    flex-basis: 260px;
+}
+.aside-left-content {
+    display: flex;
+    flex-basis: 260px;
+    flex-flow: column;
+    height: 100vh;
+    background-color: #FFF;
+    overflow: hidden;
+}
+
+.title-aside {
+    font-family: 'Segoe UI Regular';
+    font-size: 13px;
+    color: gray;
+    padding: 7px 10px;
+    margin: 0;
+}
+
+.user-top {
+    margin-top: 15px;
+}
+.account {
+    position: relative;
+}
+
+.names {
+    padding: 5px 10px;
+}
+.names:hover {
+    background: #FAFBFC;
+}
+.names div {
+    display: inline-block;
+}
+.names .avatar {
+    font-size: 11px;
+    font-family: 'Segoe UI Regular';
+    padding: 6px;
+    border-radius: 50%;
+    background: #603CBA;
+    color: #FFF;
+    margin-right: 5px;
+}
+.names .account-details {
+    vertical-align: middle;
+}
+.names .account-details p {
+    margin: 0;
+}
+.names .account-details .full-name {
+    font-size: 14px;
+    font-family: 'Segoe UI Regular';
+}
+.names .account-details .email {
+    font-size: 11px;
+    font-family: 'Segoe UI Regular';
+    color: gray;
+}
+.names .account-details .email i {
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.user-drop {
+    display: none !important;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+}
+.user-drop-content {
+    position: absolute;
+    top: 90px;
+    left: 10px;
+    width: 248px;
+    background: #fff;
+    margin-top: 7px;
+    border-radius: 4px;
+    overflow: hidden;
+    -webkit-box-shadow: 1px 0px 7px 1px rgba(121,119,117,0.41);
+    -moz-box-shadow: 1px 0px 7px 1px rgba(114, 78, 43, 0.41);
+    box-shadow: 1px 0px 7px 1px rgba(121,119,117,0.41);
+}
+.user-drop-list {
+    display: flex !important;
+    align-items: center;
+    padding: 0 5px;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+}
+.user-drop-list:hover {
+    background: #FAFBFC;
+    cursor: default
+}
+.user-drop-list i {
+    margin: 0 10px;
+    font-size: 17px;
+}
+.user-drop-list p {
+    margin-left: 10px;
+}
+.user-drop-separator {
+    display: flex !important;
+    height: 1px;
+    background: #f1f1f1;
+}
+
+
+.search-button {
+    position: absolute;
+    top: 0; 
+    right: 0;
+    padding: 12px 14px;
+    background: #FFF;
+}
+.search-button:hover {
+    background: #FAFBFC;
+}
+.search-button i {
+    color: gray;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.nav-collections {
+    overflow-y: auto;
+}
+.navs {
+    padding: 10px 17px 10px 5px;
+}
+.navs:focus {
+    outline: 0 !important;
+}
+.navs:hover {
+    background: #F4F5F5;
+}
+.navs-active-border {
+    background: #F8F9FA;
+}
+.navs-active-border > .navs-border {
+    border-left: 2px solid gray !important; 
+}
+.navs-active-border .ms-Icon-customBold {
+    font-weight: bold;
+}
+.navs-border {
+    display: flex;
+    align-items: center;
+    border-left: 2px solid transparent;
+    padding: 2px 0px;
+}
+.navs-border i {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+.navs-border p {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.separator {
+    padding: 10px 15px;
+}
+.separator div {
+    height: 1px;
+    background: #f1f1f1;
+}
+
+@media screen and (min-width: 776px) {
+    .aside-left-overlay { 
+        display: flex; 
+        z-index: 30; 
+    }  
+}
+@media screen and (min-width: 0px) and (max-width: 775px) {
+    .aside-left-overlay { 
+        display: none;
+        width: 100%;
+        background-color:rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 20;
+    }
+    .aside-left-content {
+        flex-basis: 260px;
+    }   
+}
+
+
+
+main {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    padding: 0;
+    flex-grow: 1;
+    flex-basis: 0%;
+    background-image: url('../img/mountain-field.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/************ Main top ************/
+.main-top {
+    background: inherit;
+    background-attachment: fixed;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 50px 25px 20px 25px;
+    z-index: 15;
+}
+.main-top-hb {
+    display: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.main-top-content {
+    position: relative;
+}
+.main-top-content h1 {
+    font-family: 'Segoe UI Regular';
+    font-size: 27px;
+    color: #FFF;
+    margin: 0;
+}
+.main-top-right {
+    position: absolute;
+    top: 5px;
+    right: 0;
+}
+.main-top-right .top-actions {
+    display: inline-block;
+    margin-left: 10px;
+}
+.top-actions .top-right-i {
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 17px;
+    text-align: center;
+    padding: 6px;
+    border-radius: 5px;
+}
+.top-actions .top-right-i:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#customize {
+    position: relative;
+}
+#customize-pop {
+    display: none;
+    position: absolute;
+    top: -100%;
+    right: 120%;
+    width: 290px;
+    margin-top: 5px;
+    background: #FFF;
+    border: 1px solid #FFF;
+    border-radius: 4px;
+    -webkit-box-shadow: 1px 0px 7px 1px rgba(121,119,117,0.41);
+    -moz-box-shadow: 1px 0px 7px 1px rgba(121,119,117,0.41);
+    box-shadow: 1px 0px 7px 1px rgba(121,119,117,0.41);
+}
+.customize-list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 13px 15px; 
+}
+.customize-list:hover {
+    background: #F5F6F7
+}
+.customize-list i {
+    font-size: 16px;
+    color: gray;
+}
+.customize-list span {
+    flex-grow: 1;
+    flex-basis: 1;
+    flex-shrink: 0;
+    margin-left: 17px;
+}
+.customize-list .ms-Icon--ChevronRightMed {
+    padding: 0;
+    font-size: 13px;
+}
+#theme {
+    padding: 10px 0px;
+}
+#theme p {
+    margin: 0 13px;
+}
+.theme-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 10px 0px 10px;
+}
+.theme-border {
+    border: 2px solid transparent;
+    background: #fff; 
+    padding: 2px;
+    margin: 2px;
+}
+.theme-active-border {
+    border: 2px solid #0078d4;
+}
+.theme-picture {
+    height: 42px;
+    width: 42px;
+    background: lightgreen;
+}
+
+.solid-colors {
+    padding: 1px !important;
+}
+.solid-colors .theme-picture {
+    height: 44px !important;
+    width: 44px !important;
+    border: 2px solid #3063AB;
+    box-sizing: border-box;
+}
+
+[data-theme="blue-theme"] {
+    background: rgb(95,115,193) !important;
+    background: linear-gradient(180deg, rgba(95,115,193,1) 37%, rgba(109,129,209,1) 77%, rgba(117,137,218,1) 95%) !important;
+}
+[data-solid-theme="light-blue"] {
+    background: #DFEDF9;
+}
+[data-img-theme="bg1"] {
+    background-image: url('../img/mountain-field.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+.sort-by-pop {
+    position: absolute;
+    top: 0;
+    right: 99%;
+    width: 250px;
+    background: #FFF;
+    border: 1px solid #FFF;
+    box-sizing: border-box;;
+    border-radius: 4px;
+    overflow: hidden;
+    -webkit-box-shadow: 1px 0px 7px 1px rgba(121,119,117,0.41);
+    -moz-box-shadow: 1px 0px 7px 1px rgba(121,119,117,0.41);
+    box-shadow: 1px 0px 7px 1px rgba(121,119,117,0.41);
+}
+.sort-list {
+    display: flex;
+    align-items: center;
+    padding: 13px 15px;
+}
+.sort-list:hover {
+    background: #F5F6F7;
+}
+@media screen and (min-width: 0px) and (max-width: 775px) {
+    /* Few additions/adjustments in the main window */
+    .main-top {
+        padding-top: 25px !important;
+        padding-bottom: 10px !important;
+    }
+    .main-top-hb {
+        display: block !important;
+    }
+}
+
+
+/************ Main list ************/
+.main-list {
+    z-index: 5;
+    padding: 5px 25px 0 25px;
+    flex: 1 1 auto;
+}
+.task {
+    display: flex;
+    align-items: center;
+    padding: 5px 5px;
+    background: #FFF;
+    border-radius: 5px;
+    margin: 3px 0;
+}
+.task:hover {
+    background: #F5F5F5;
+}
+.active-task {
+    background: #F5F7F9;
+}
+.task-check {
+    padding: 10px 15px 10px 10px;
+}
+.task-check i {
+    color: gray;
+    font-size: 23px;
+    vertical-align: middle;
+}
+.task-description {
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+.task-title {
+    margin: 0;
+    word-wrap: break-word;
+    font-size: 14px;
+}
+.task-description ul {
+    list-style: disc;
+    font-size: 12px;
+    color: gray;
+    margin: 0 !important;
+    padding: 0;
+    padding-top: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.task-description ul li {
+    display: inline;
+    text-align: left;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.task-description ul li .ms-Icon--RadioBullet {
+    font-size: 8px;
+}
+.task-pre-icon {
+    vertical-align: baseline;
+    font-size: 10px;
+    font-weight: bold;
+}
+.task-star {
+    color: gray;
+    padding: 10px 15px;
+}
+.task-star i {
+    font-size: 17px;
+}
+
+.completed-toggle {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 15px;
+    width: fit-content;
+    margin: 12px 0;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.completed-toggle:hover {
+    background: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+.completed-toggle i {
+    margin-right: 8px;
+    font-size: 12px;
+}
+
+.completed-task span {
+    color: #69797e;
+    font-size: 14px;
+    text-decoration: line-through;
+}
+
+/************ Task input form ************/
+.task-input-wrap {
+    background: inherit;
+    background-attachment: fixed;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    box-sizing: border-box;
+    padding: 5px 25px 30px 25px;
+    z-index: 10;
+}
+.task-input-content {
+    display: flex;
+    align-items: center;
+    color: #f3f2f1;
+    padding: 8px 8px;
+    margin: 3px 0;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+}
+.task-input-left-icon {
+    padding: 10px 10px;
+    display: inline-block;
+}
+.task-input-left-icon i {
+    font-size: 16px;
+    vertical-align: middle;
+}
+.task-input-form {
+    font-size: 15px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 10px;
+}
+.task-title-form {
+    font-size: 15px;
+}
+
+
+
+
+
+/**********************************
+***********************************
+3. Right sidebar pane
+***********************************
+**********************************/
+.aside-right-overlay {
+    /* display: flex; */
+    display: none;
+    flex-basis: 360px;
+}
+.aside-right-content {
+    display: flex;
+    flex-flow: column;
+    flex-basis: 360px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/************ Main task and steps ************/
+.right-task {
+    background: #fff;
+    padding-top: 43px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom: 1px solid #e1dfdd;
+}
+.right-task-title {
+    display: flex;
+    flex-flow: row;
+    padding: 15px 8px;
+}
+.right-task-title i:nth-child(1) {
+    font-size: 23px;
+    vertical-align: middle;
+    color: gray;
+}
+.right-task-title i:nth-child(3) {
+    font-size: 17px;
+    vertical-align: middle;
+    color: gray;
+    margin-top: 2px;
+}
+.right-task-title h1 {
+    font-family: 'Segoe UI Regular';
+    font-size: 18px;
+    margin: 0;
+    margin-left: 10px;
+    margin-top: -2px;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    padding-left: 11px;
+    padding-right: 11px;
+}
+.step:hover {
+    background: #FAFBFC;
+} 
+.step:hover > .step-title i{
+    display: block;
+}
+.step i:nth-child(1) {
+    color: gray;
+    font-size: 17px;
+    font-weight: bold;
+}
+.step-title {
+    display: flex;
+    align-items: center;
+    font-size: 16px; 
+    width: 100%;
+    margin-left: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid lightgray;
+}
+.step-title span {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+.step-title i {
+    color: gray;
+    display: none;
+}
+
+.next-step-input {
+    display: flex;
+    align-items: center;
+    padding-left: 11px;
+    padding-right: 11px;
+    color: #0078d4;
+}
+.next-step-input .step-title {
+    border-bottom: 0;
+}
+.next-step-input i:nth-child(1) {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+
+/************ Manage Task ************/
+.manage-task {
+    flex-grow: 1;
+    background: #f5f5f5;
+    padding: 10px;
+}
+
+.mb-8 {
+    margin-bottom: 8px;
+}
+.manage-container {
+    position: relative;
+}
+.manage > i {
+    font-size: 17px;
+}
+.manage {
+    display: flex;
+    align-items: center;
+    color: #797775;
+    background: #FFF;
+    border: 1px solid #edebe9;
+    padding-left: 15px;
+}
+.manage:hover {
+    background: #FAFBFC;
+}
+.manage-title {
+    flex-grow: 1;
+    font-family: 'Segoe UI Regular';
+    font-size: 16px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    margin-left: 15px;
+}
+.title-placeholder {
+    flex-grow: 1;
+    flex-basis: auto;
+}
+.delete-manage {
+    color: #797775;
+    background: #fff;
+    height: 100%;
+    width: 45px;
+    font-size: 16px;
+    border-top: 1px solid #edebe9;
+    border-right: 1px solid #edebe9;
+    border-bottom: 1px solid #edebe9;
+    border-left: none !important;
+    border-radius: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.delete-manage:hover {
+    background: #FAFBFC;
+    border-top: 1px solid #edebe9;
+    border-right: 1px solid #edebe9;
+    border-bottom: 1px solid #edebe9;
+}
+
+
+.group-manage {
+    border: 1px solid #edebe9;
+}
+.group-manage .manage,
+.group-manage .delete-manage {
+    border: none;
+}
+.group-manage .manage-container:not(:last-child) .delete-manage, 
+.group-manage .manage-container:not(:last-child) .manage-title {
+    border-bottom: 1px solid #edebe9;
+}
+
+.notes {
+    color: gray;
+    background: #fff;
+    padding: 13px 15px;
+}
+
+
+/************ Detail bottom ************/
+.detail-bottom {
+    display: flex;
+    position: sticky;
+    bottom: 0;
+    color: gray;
+    background: #fff;
+    border-top: 1px solid #edebe9;
+}
+
+.detail-bottom-title {
+    flex-grow: 1;
+    text-align: center;
+    padding: 7px 5px;
+}
+.detail-bottom-icon {
+    font-size: 18px;
+    padding: 10px 12px;
+}
+.detail-bottom-icon:hover {
+    background: #FAFBFC;
+}
+.detail-bottom-icon i {
+    vertical-align: middle;
+}
+
+@media screen and (min-width: 920px) {
+    /* Show on larger screens */
+    .aside-right-overlay { 
+        display: flex; 
+        /* display: none; */
+    }
+}
+@media screen and (min-width: 0px) and (max-width: 919px) { 
+    /* Toggle on smaller screens */
+    .aside-right-overlay {
+        /* display: none; */
+        display: flex;
+        flex-flow: row-reverse;
+        width: 100%;
+        background-color:rgba(0, 0, 0, 0.5);
+        height: 100vh;
+        overflow-y: auto;
+
+        position: absolute;
+        top: 0; 
+        z-index: 20;
+    }
+    .aside-right-content {
+        flex-basis: 360px;
+    }
+}
+
+
+
+/**********************************
+***********************************
+4. Dialogs
+***********************************
+**********************************/
+.dialog {
+    display: none !important;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+.dialog-content {
+    width: fit-content;
+    background: #fff;
+    margin: 15% auto;
+    border-radius: 4px;
+    overflow: hidden;
+    -webkit-box-shadow: 1px 0px 7px 1px rgba(121,119,117,0.41);
+    -moz-box-shadow: 1px 0px 7px 1px rgba(114, 78, 43, 0.41);
+    box-shadow: 1px 0px 7px 1px rgba(121,119,117,0.41);
+}
+
+/* Manage Accounts */
+.manage-accounts {
+    width: 320px;
+}
+.manage-accounts-header {
+    font-size: 16px;
+    text-align: center;
+    padding: 5px;
+}
+.manage-account-list {
+    padding: 15px 15px;
+}
+.manage-account-list:hover {
+    cursor: default;
+    background: #FAFBFC;
+}
+.manage-account-list div {
+    display: inline-block;
+    box-sizing: border-box;
+}
+.manage-account-list .avatar {
+    font-size: 11px;
+    font-family: 'Segoe UI Regular';
+    padding: 6px;
+    border-radius: 50%;
+    background: #603CBA;
+    color: #FFF;
+    margin-right: 20px;
+}
+.manage-account-list .account-details {
+    vertical-align: middle;
+}
+.manage-account-list .account-details p {
+    margin: 0;
+}
+.manage-account-list .account-details .full-name {
+    font-size: 14px;
+    font-family: 'Segoe UI Regular';
+}
+.manage-account-list .account-details .email {
+    font-size: 11px;
+    font-family: 'Segoe UI Regular';
+    color: gray;
+}
+.manage-account-list .account-details .email i {
+    font-size: 9px;
+    font-weight: bold;
+}
+.manage-account-signout {
+    float: right;
+}
+.manage-account-signout a {
+    display: block;
+    font-family: 'Segoe UI Regular';
+    background: #DC282B;
+    color: #FFF;
+    padding: 5px;
+    text-decoration: none;
+    text-align: center;
+    width: 70px;
+}
+.manage-account-add {
+    box-sizing: border-box;
+}
+
+.manage-account-add {
+    display: flex;
+    align-items: center;
+    color: #000;
+    padding: 17px 20px;
+    text-decoration: none;
+}
+.manage-account-add:hover {
+    cursor: default;
+    background: #FAFBFC;
+}
+.manage-account-add i {
+    margin-right: 20px;
+    font-size: 18px;
+}
+.manage-account-add p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.manage-account-footer {
+    padding: 15px;
+}
+.manage-account-footer button {
+    float: right;
+    color: #000;
+    background: #f1f1f1;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+.manage-account-footer button:hover {
+    border: 1px solid #000;
+}
+
+/* Dialog Delete */
+.dialog-delete {
+    padding: 20px;
+}
+.dialog-delete p {
+    margin: 0 !important;
+}
+.dialog-delete-header {
+    font-size: 23px;
+    padding: 5px;
+}
+.dialog-delete-message {
+    font-size: 14px;
+    padding: 5px;
+}
+.dialog-delete-option {
+    text-align: right;
+    margin-top: 40px;
+}
+.dialog-delete-option button {
+    padding: 5px 40px;
+    font-size: 14px;
+    margin-left: 10px;
+    border-radius: 0;
+}
+.dialog-delete-option button:first-child {
+    background: #DC282B;
+    color: #FFF;
+}
+.dialog-delete-option button:last-child {
+    background: #EDEDED;
+    color: #000;
+}
+
